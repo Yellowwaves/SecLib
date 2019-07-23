@@ -7,7 +7,7 @@ def call(Closure configBlock) {
     def uniqId = UUID.randomUUID().toString()
 
 podTemplate(
-    label: "jnlpslave-checkmarx-${config.project_name}",
+    label: "jnlpslave-zap-${config.project_name}",
     containers: [
         containerTemplate(
             name: 'jnlp',
@@ -41,7 +41,7 @@ podTemplate(
                 checkout scm
             }
             stage('ZAP Analysis') {
-                container('checkmarx'){
+                container('zap'){
                 echo "Project Name        : ${config.project_name}"
                 }
             }
