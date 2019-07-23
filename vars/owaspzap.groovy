@@ -6,13 +6,6 @@ def call(Closure configBlock) {
     configBlock()
     def uniqId = UUID.randomUUID().toString()
 
-JobProperties{
-    days_to_keep            = "30"
-    num_to_keep             = "30"
-    upstream_project        = null
-    allow_concurrent_builds = false
-    optimize_performance    = true
-}
 podTemplate(
     label: "jnlpslave-checkmarx-${config.project_name}",
     containers: [
