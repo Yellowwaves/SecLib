@@ -23,7 +23,7 @@ podTemplate(
         ),
         containerTemplate(
             name: 'zap',
-            image: 'zap',
+            image: 'abdessamad/zap',
             ttyEnabled: true,
             alwaysPullImage: true,
             envVars: [
