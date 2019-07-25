@@ -23,7 +23,7 @@ podTemplate(
         ),
         containerTemplate(
             name: 'zap',
-            image: 'owasp/zap2docker-stable',
+            image: 'abdessamadtmr/zap',
             ttyEnabled: true,
             alwaysPullImage: true,
             envVars: [
@@ -50,6 +50,9 @@ podTemplate(
                         echo "Target URL             : ${config.target_url}"
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
+			
+			sh "zap-baseline.py -t ${config.taget_url} -g gen.conf -r testreport.html"
+
                     }
                 }
             }
