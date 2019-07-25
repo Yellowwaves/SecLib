@@ -45,9 +45,10 @@ podTemplate(
             }
             stage('ZAP Analysis') {
                 container('zap'){
-                    withCredentials([string(credentialsId: 'dojo', variable: 'DOJO_URL'), string(credentialsId: 'dojo', variable: 'DOJO_API_KEY')]) {
+                    withCredentials([string(credentialsId: 'dojo_url', variable: 'DOJO_URL'), string(credentialsId: 'dojo_api_key', variable: 'DOJO_API_KEY')]) {
                         echo "Engagement Id          : ${config.engagement_id}"
                         echo "DefectDojo URL         : $DOJO_URL"
+                        echo "DefectDojo API KEY     : $DOJO_API_KEY"
                     }
                 }
             }
