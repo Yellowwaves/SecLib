@@ -53,9 +53,6 @@ podTemplate(
 				echo "Engagement Id          : ${config.engagement_id}"
 				echo "DefectDojo URL         : ${dojo_url}"
 				echo "DefectDojo API Key     : ${dojo_api_key}"
-
-#				sh "zap-baseline.py -t ${config.taget_url} -g gen.conf -r testreport.html -U ${dojo_url} -A ${dojo_api_key} -I ${config.engagement_id}"
-
 			}
                 }
             }
