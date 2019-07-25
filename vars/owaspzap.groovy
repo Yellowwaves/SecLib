@@ -23,7 +23,7 @@ podTemplate(
         ),
         containerTemplate(
             name: 'zap',
-            image: 'owasp/zap2docker-stable',
+            image: 'gcr.io/cybercops/zap',
             ttyEnabled: true,
             alwaysPullImage: true,
             envVars: [
