@@ -23,7 +23,7 @@ podTemplate(
         ),
         containerTemplate(
             name: 'zap',
-            image: 'abdessamadtmr/zap',
+            image: 'owasp/zap2docker-stable',
             ttyEnabled: true,
             alwaysPullImage: true,
             envVars: [
