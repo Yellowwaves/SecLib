@@ -51,8 +51,8 @@ podTemplate(
 			]) {
 				echo "Target URL             : ${config.taget_url}"
 				echo "Engagement Id          : ${config.engagement_id}"
-				echo "DefectDojo URL         : ${dojo_url}"
-				echo "DefectDojo API Key     : ${dojo_api_key}"
+				echo "DefectDojo URL         : $DOJO_URL"
+				echo "DefectDojo API Key     : $DOJO_API_KEY"
 			}
                 }
             }
