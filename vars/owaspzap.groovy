@@ -38,26 +38,23 @@ podTemplate(
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
   ]
 ) {
-    node("jnlpslave-zap-${config.project_name}"){
+    node("jnlpslave-zap-${config.engagement_id}"){
         try {
             stage('Checkout') {
                 checkout scm
             }
             stage('ZAP Analysis') {
                 container('zap'){
-                    withCredentials([
-                        usernamePassword(
-                            usernameVariable: 'DOJO_API_KEY',
-                            urlVariable: 'DOJO_URL'
-                            credentialsId: config.secret_id ?: 'dojo'
-                            )
-                        ]) {
-			echo "Target URL             : ${config.taget_url}"
-			echo "Engagement Id          : ${config.engagement_id}"
-			echo "DefectDojo URL         : ${dojo_url}"
-                        echo "DefectDojo API Key     : ${dojo_api_key}"
+			withCredentials([
+				[string(credentialsId: 'dojo', variable: 'DOJO_API_KEY')],
+				[string(credentialsId: 'dojo', variable: 'DOJO_URL')]
+			]) {
+				echo "Target URL             : ${config.taget_url}"
+				echo "Engagement Id          : ${config.engagement_id}"
+				echo "DefectDojo URL         : ${dojo_url}"
+				echo "DefectDojo API Key     : ${dojo_api_key}"
 
-			sh "zap-baseline.py -t ${config.taget_url} -g gen.conf -r testreport.html -U ${dojo_url} -A ${dojo_api_key} -I ${config.engagement_id}"
+#				sh "zap-baseline.py -t ${config.taget_url} -g gen.conf -r testreport.html -U ${dojo_url} -A ${dojo_api_key} -I ${config.engagement_id}"
 
 			}
                 }
