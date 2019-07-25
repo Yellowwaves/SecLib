@@ -51,7 +51,7 @@ podTemplate(
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
-			sh "zap-baseline.py -t ${config.taget_url} -g gen.conf -r testreport.html"
+			sh "zap-baseline.py -t ${config.target_url} -g gen.conf -r testreport.html"
 
                     }
                 }
