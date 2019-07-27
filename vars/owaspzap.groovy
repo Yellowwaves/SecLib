@@ -36,7 +36,7 @@ podTemplate(
     ],
   volumes: [
     hostPathVolume(mountPath: "/var/run/docker.sock", hostPath: "/var/run/docker.sock")
-    ]
+  ]
 ) {
     node("jnlpslave-zap-${config.engagement_id}"){
         try {
@@ -51,7 +51,7 @@ podTemplate(
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
-			sh "mkdir -p /zap/wrk; zap-baseline.py -t ${config.target_url} -g gen.conf -r /root/reports/testreport.html"
+			sh "mkdir -p /zap/wrk; zap-baseline.py -t ${config.target_url} -g gen.conf -r testreport.html"
 
                     }
                 }
