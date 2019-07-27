@@ -36,7 +36,7 @@ podTemplate(
     ],
   volumes: [
     hostPathVolume(mountPath: "/var/run/docker.sock", hostPath: "/var/run/docker.sock"),
-    hostPathVolume(mountPath: "/reports/", hostPath: "/var/lib/docker/volumes/reports/"),
+    hostPathVolume(mountPath: "/reports/", hostPath: "reports"),
   ]
 ) {
     node("jnlpslave-zap-${config.engagement_id}"){
@@ -54,7 +54,7 @@ podTemplate(
 			
 			sh "ls -ltr /reports"
             sh "mkdir -p /zap/wrk; zap-baseline.py -t ${config.target_url} -g gen.conf -r /reports/testreport.html  || true"
-
+            sh "ls -ltr /reports"
                     }
                 }
             }
