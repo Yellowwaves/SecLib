@@ -53,7 +53,7 @@ podTemplate(
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
 			sh "ls -ltr /reports"
-            sh "mkdir -p /zap/wrk; zap-baseline.py -t ${config.target_url} -g gen.conf -r testreport.html"
+            sh "mkdir -p /zap/wrk; zap-baseline.py -t ${config.target_url} -g gen.conf -r /reports/testreport.html  || true"
 
                     }
                 }
