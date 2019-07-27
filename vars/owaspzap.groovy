@@ -36,7 +36,7 @@ podTemplate(
     ],
   volumes: [
     hostPathVolume(mountPath: "/var/run/docker.sock", hostPath: "/var/run/docker.sock"),
-    persistentVolumeClaim(claimName: 'data-claim-compile', mountPath: '/data'),
+    hostPathVolume(mountPath: "/reports/", hostPath: "/var/lib/docker/volumes/reports/"),
   ]
 ) {
     node("jnlpslave-zap-${config.engagement_id}"){
@@ -52,7 +52,7 @@ podTemplate(
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
-			sh "ls -ltr /data"
+			sh "ls -ltr /reports"
             sh "mkdir -p /zap/wrk; zap-baseline.py -t ${config.target_url} -g gen.conf -r testreport.html"
 
                     }
