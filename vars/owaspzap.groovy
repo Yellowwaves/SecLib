@@ -36,7 +36,7 @@ podTemplate(
     ],
   volumes: [
     hostPathVolume(mountPath: "/var/run/docker.sock", hostPath: "/var/run/docker.sock"),
-    persistentVolumeClaim(mountPath: '/etc/mount6', claimName: 'reports-data', readOnly: false)
+    persistentVolumeClaim(mountPath: '/etc/mount6', claimName: 'reports-data', ReadWrite: true)
   ]
 ) {
     node("jnlpslave-zap-${config.engagement_id}"){
