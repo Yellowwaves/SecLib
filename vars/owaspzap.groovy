@@ -47,8 +47,9 @@ podTemplate(
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
-            sh "whoami"
+            sh "id"
             sh "ls -ald /zap/reports/"
+            sh "touch /zap/reports/test.txt"
             sh "zap-baseline.py -t ${config.target_url}; exit 0"
                     }
                 }
