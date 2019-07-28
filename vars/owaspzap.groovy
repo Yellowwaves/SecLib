@@ -61,8 +61,6 @@ podTemplate(
         }
         catch(Exception e) {
             println "error message : ${e}"
-            currentBuild.result = 'FAILURE'
-            throw e
         }
         finally {
             Notification{
