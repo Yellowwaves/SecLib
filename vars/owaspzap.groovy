@@ -26,12 +26,7 @@ podTemplate(
             image: 'abdessamadtmr/zap',
             ttyEnabled: true,
             privileged: true,
-            alwaysPullImage: true,
-            envVars: [
-                containerEnvVar(
-                    key: 'HOME',
-                    value: '/root/'
-                )
+            alwaysPullImage: true
             ]
         )
     ],
