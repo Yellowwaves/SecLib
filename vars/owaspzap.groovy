@@ -25,6 +25,7 @@ podTemplate(
             name: 'zap',
             image: 'abdessamadtmr/zap',
             ttyEnabled: true,
+            privileged: true,
             alwaysPullImage: true,
             envVars: [
                 containerEnvVar(
@@ -36,7 +37,7 @@ podTemplate(
     ],
   volumes: [
     hostPathVolume(mountPath: "/var/run/docker.sock", hostPath: "/var/run/docker.sock"),
-    persistentVolumeClaim(mountPath: '/etc/mount6', claimName: 'reports-data', ReadWrite: true)
+    persistentVolumeClaim(mountPath: '/etc/mount6', claimName: 'reports-data')
   ]
 ) {
     node("jnlpslave-zap-${config.engagement_id}"){
