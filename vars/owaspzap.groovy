@@ -36,7 +36,7 @@ podTemplate(
     ],
   volumes: [
     hostPathVolume(mountPath: "/var/run/docker.sock", hostPath: "/var/run/docker.sock"),
-    hostPathVolume(mountPath: "/reports/", hostPath: "reports"),
+    hostPathVolume(mountPath: "/reports/", hostPath: "reports", readOnly: false),
   ]
 ) {
     node("jnlpslave-zap-${config.engagement_id}"){
