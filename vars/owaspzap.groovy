@@ -1,4 +1,14 @@
 #!/usr/bin/env groovy
+
+/**
+ * This pipeline will execute a simple baseline owasp-zap scan, using a Persistent Volume Claim to store the reports
+ *
+ * A PersistentVolumeClaim needs to be created ahead of time with the definition in jenkins/pv.yml
+ *
+ * NOTE that typically writable volumes can only be attached to one Pod at a time, so you can't execute
+ * two concurrent jobs with this pipeline. Or change readOnly: true after the first run
+ */
+
 def call(Closure configBlock) {
     def config= [:]
     configBlock.resolveStrategy = Closure.DELEGATE_FIRST
@@ -47,10 +57,7 @@ podTemplate(
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
-            sh "id"
-            sh "ls -ald /zap/reports/"
-            sh "touch /zap/reports/test.txt"
-            sh "zap-baseline.py -t ${config.target_url}; exit 0"
+            sh "zap-baseline.py -t ${config.target_url} -A 3eacdefc9f30304ec79d9c44f7be6f55cc1b17c5 -I 8 -U https://defectdojo.herokuapp.com/"
                     }
                 }
             }
