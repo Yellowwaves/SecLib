@@ -52,7 +52,7 @@ podTemplate(
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
-            sh "ls -ltr /etc/mount6"
+            sh "touch /etc/mount6/file.txt"
             sh "mkdir -p /zap/wrk; zap-baseline.py -t ${config.target_url}; exit 0"
                     }
                 }
