@@ -27,7 +27,6 @@ podTemplate(
             ttyEnabled: true,
             privileged: true,
             alwaysPullImage: true
-            ]
         )
     ],
   volumes: [
