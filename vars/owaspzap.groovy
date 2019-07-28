@@ -57,7 +57,7 @@ podTemplate(
                         echo "DefectDojo URL         : $DOJO_URL"
                         echo "DefectDojo API KEY     : $DOJO_API_KEY"
 			
-            sh "zap-baseline.py -t ${config.target_url} -A 3eacdefc9f30304ec79d9c44f7be6f55cc1b17c5 -I 8 -U https://defectdojo.herokuapp.com/"
+            sh "zap-baseline.py -t ${config.target_url} -A $DOJO_API_KEY -I ${config.engagement_id} -U $DOJO_URL"
                     }
                 }
             }
